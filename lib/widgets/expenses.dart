@@ -32,6 +32,14 @@ class _ExpensesState extends State<Expenses> {
     });
   }
 
+  double getTotal() {
+    double total = 0;
+    for (int i = 0; i < _registeredExpenses.length; ++i) {
+      total += _registeredExpenses[i].amount;
+    }
+    return total;
+  }
+
   void _removeExpense(Expense exp) {
     final expenseIndex = _registeredExpenses.indexOf(exp);
     setState(() {
@@ -79,18 +87,41 @@ class _ExpensesState extends State<Expenses> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Expense Tracker'),
+        title: const Row(
+          children: [
+            SizedBox(
+              width: 115,
+            ),
+            Text(
+              'Expense Tracker',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
             onPressed: _openAddExpenseOverlay,
+            color: Colors.white,
             icon: const Icon(Icons.add),
           ),
         ],
       ),
       body: Column(
         children: [
-          const Text('Chart'),
+          const SizedBox(
+            height: 30,
+          ),
+          // const Text('Chart'),
           Expanded(child: mainContent),
+          Text(
+            'Total: \$${getTotal()}',
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+            ),
+          ),
         ],
       ),
     );

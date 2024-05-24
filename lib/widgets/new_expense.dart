@@ -140,10 +140,15 @@ class _NewExpenseState extends State<NewExpense> {
                   });
                 },
               ),
-              const Spacer(),
+              const SizedBox(
+                width: 40,
+              ),
               ElevatedButton(
                 onPressed: _submitExpenseDate,
                 child: const Text('Save Expense'),
+              ),
+              const SizedBox(
+                width: 10,
               ),
               ElevatedButton(
                 onPressed: () {
