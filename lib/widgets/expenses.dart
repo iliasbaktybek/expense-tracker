@@ -1,3 +1,5 @@
+import 'package:expense_tracker/widgets/chart/chart.dart';
+import 'package:expense_tracker/widgets/expenses_list/expense_item.dart';
 import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,26 @@ class Expenses extends StatefulWidget {
 
 class _ExpensesState extends State<Expenses> {
   final List<Expense> _registeredExpenses = [
+    Expense(
+        title: 'Flutter Course',
+        amount: 19.99,
+        date: DateTime.now(),
+        category: Category.work),
+    Expense(
+        title: 'Cinema',
+        amount: 15.69,
+        date: DateTime.now(),
+        category: Category.leisure),
+    Expense(
+        title: 'Burger',
+        amount: 12.99,
+        date: DateTime.now(),
+        category: Category.food),
+    Expense(
+        title: 'Car maintenance',
+        amount: 50.69,
+        date: DateTime.now(),
+        category: Category.travel),
     Expense(
         title: 'Flutter Course',
         amount: 19.99,
@@ -90,7 +112,7 @@ class _ExpensesState extends State<Expenses> {
         title: const Row(
           children: [
             SizedBox(
-              width: 115,
+              width: 105,
             ),
             Text(
               'Expense Tracker',
@@ -113,12 +135,17 @@ class _ExpensesState extends State<Expenses> {
           const SizedBox(
             height: 30,
           ),
-          // const Text('Chart'),
-          Expanded(child: mainContent),
+          Chart(expenses: _registeredExpenses),
+          // Expanded(child: mainContent),
+          ExpensesList(
+              expenses: _registeredExpenses, onRemoveExpense: _removeExpense),
+          const SizedBox(
+            height: 70,
+          ),
           Text(
-            'Total: \$${getTotal()}',
+            'Total: \$${getTotal().toStringAsFixed(2)}',
             style: const TextStyle(
-              color: Colors.black,
+              // color: Colors.black,
               fontSize: 20,
             ),
           ),

@@ -4,8 +4,24 @@ import 'package:expense_tracker/widgets/expenses.dart';
 var kColorScheme =
     ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 29, 90, 182));
 
+var kDarkColorScheme = ColorScheme.fromSeed(
+  brightness: Brightness.dark,
+  seedColor: const Color.fromARGB(255, 5, 99, 125),
+);
+
 void main() {
   runApp(MaterialApp(
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: kDarkColorScheme,
+        cardTheme: const CardTheme().copyWith(
+          // color: kColorScheme.primaryContainer,
+          color: kDarkColorScheme.secondaryContainer,
+          margin: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+        ),
+      ),
       theme: ThemeData().copyWith(
         // useMaterial3: true,
         colorScheme: kColorScheme,
@@ -33,5 +49,6 @@ void main() {
               ),
             ),
       ),
+      // themeMode: ThemeMode.system,
       home: Expenses()));
 }

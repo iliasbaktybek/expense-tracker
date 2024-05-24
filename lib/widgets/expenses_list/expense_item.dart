@@ -23,9 +23,10 @@ class ExpenseItem extends StatelessWidget {
                 Text(
                   expense.title,
                   style: GoogleFonts.roboto(
-                    color: Colors.black,
-                    fontSize: 18,
+                    // color: Colors.black,
+                    fontSize: 19,
                   ),
+                  // style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             ),
@@ -37,7 +38,6 @@ class ExpenseItem extends StatelessWidget {
                 Text(
                   '\$${expense.amount.toStringAsFixed(2)}',
                   style: GoogleFonts.roboto(
-                    color: Colors.black,
                     fontSize: 17,
                   ),
                 ),
@@ -51,7 +51,7 @@ class ExpenseItem extends StatelessWidget {
                     Text(
                       expense.formattedDate,
                       style: GoogleFonts.roboto(
-                        color: Colors.black,
+                        // color: Colors.black,
                         fontSize: 17,
                       ),
                     ),
